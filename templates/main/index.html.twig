@@ -4,13 +4,17 @@
 
 {% block body %}
 
-<div class="container">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/dev/webmotion.test/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/dev/webmotion.test/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a></code></li>
-    </ul>
+<div class="container-fluid align-items-center">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Számlázási címek</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Rendelés</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Rendelések</a>
+        </li>
+</ul>
 </div>
 {% endblock %}
