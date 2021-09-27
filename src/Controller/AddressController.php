@@ -16,7 +16,6 @@ class AddressController extends AbstractController
      */
     public function index(Request $request): Response
     {
-        dd($request);
         return $this->render('address/index.html.twig', [
             'controller_name' => 'AddressController',
         ]);
@@ -37,7 +36,7 @@ class AddressController extends AbstractController
         return $this->render('address/index.html.twig',[
             'controller_name' => 'Felvitel',
             'form_title' => 'Felvitel',
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
 
     }

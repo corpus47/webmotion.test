@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block title %}{{ controller_name }}!{% endblock %}
 
 {% block body %}
 <div class="container-fluid align-items-center mx-auto px-5 pt-5">
@@ -16,13 +16,45 @@
         </li>
     </ul>
 </div>
-<div class="container-fluid text-center mx-auto px-5 pt-5">
+<div class="container-fluid mx-auto px-5 pt-5">
     <div class="row">
-        <h3 class=" mt-5 mb-5">{{ form_title }}</h3>
+        <h3 class=" mt-5 mb-5">
+        {% if form_title is defined %}
+        {{ form_title }}
+        {% endif %}
+        </h3>
         <div class="col-md-6 offset-md-1">
+        {% if form is defined %}
             {{ form_start(form) }}
-                {{ form(form) }}
+            <div class="form-group">
+                {{ form_label(form.type,"Típus") }}
+                {{ form_widget(form.type,{'attr':{'class':'form-control'}}) }}
+
+                {{ form_label(form.name,"Név") }}
+                {{ form_widget(form.name,{'attr':{'class':'form-control'}}) }}
+
+                {{ form_label(form.phone,"Telefonszám") }}
+                {{ form_widget(form.phone,{'attr':{'class':'form-control'}}) }}
+
+                {{ form_label(form.taxnum,"Adószám") }}
+                {{ form_widget(form.taxnum,{'attr':{'class':'form-control'}}) }}
+
+                {{ form_label(form.country,"Ország") }}
+                {{ form_widget(form.country,{'attr':{'class':'form-control'}}) }}
+
+                {{ form_label(form.postcode,"Irányítószám") }}
+                {{ form_widget(form.postcode,{'attr':{'class':'form-control'}}) }}
+
+                {{ form_label(form.city,"Helység") }}
+                {{ form_widget(form.city,{'attr':{'class':'form-control'}}) }}
+
+                {{ form_label(form.street,"Utca, házszám") }}
+                {{ form_widget(form.street,{'attr':{'class':'form-control'}}) }}
+
+                {{ form_widget(form.submit,{'label':'Felvisz'}) }}
+            </div>
             {{ form_end(form)}}
+        {% endif %}
         </div>
     </div>
 </div>
