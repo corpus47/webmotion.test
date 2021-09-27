@@ -34,8 +34,9 @@ class AddressController extends AbstractController
         $form->handleRequest($request);
 
 
-        return $this->render('address/index.html.twig', [
-            'controller_name' => 'AddressController',
+        return $this->render('address/index.html.twig',[
+            'controller_name' => 'Felvitel',
+            'form_title' => 'Felvitel',
             'form' => $form->createView(),
         ]);
 

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AddressController!{% endblock %}
+{% block title %}Hello {{ controller_name }}!{% endblock %}
 
 {% block body %}
 <div class="container-fluid align-items-center mx-auto px-5 pt-5">
@@ -17,8 +17,13 @@
     </ul>
 </div>
 <div class="container-fluid text-center mx-auto px-5 pt-5">
-    <div>
-        form
+    <div class="row">
+        <h3 class=" mt-5 mb-5">{{ form_title }}</h3>
+        <div class="col-md-6 offset-md-1">
+            {{ form_start(form) }}
+                {{ form(form) }}
+            {{ form_end(form)}}
+        </div>
     </div>
 </div>
 <div class="container-fluid text-center mx-auto px-5 pt-5">
