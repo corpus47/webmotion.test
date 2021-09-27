@@ -32,6 +32,19 @@ class AddressController extends AbstractController
         $form = $this->createForm(AddressesType::class,$address);
         $form->handleRequest($request);
 
+        if($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($address);
+            $em->flush();
+
+            $this->addFlash('notice','Felvitel kész!');
+
+            return $this->redirectToRoute('address/create');
+            
+        } elseif( $form->isSubmitted() && !$form->isValid()) {
+
+        }
+
 
         return $this->render('address/index.html.twig',[
             'controller_name' => 'Felvitel',

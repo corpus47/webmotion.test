@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\AddressesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\AddressesRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AddressesRepository::class)
@@ -29,6 +30,10 @@ class Addresses
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Assert\Regex(
+     *      pattern="/((?:\+?3|0)6)(?:-|\()?(\d{1,2})(?:-|\))?(\d{3})-?(\d{3,4})/"
+     * )
      */
     private $phone;
 

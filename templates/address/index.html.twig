@@ -23,6 +23,16 @@
         {{ form_title }}
         {% endif %}
         </h3>
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-error">
+                {{ form_errors(form) }}
+            </div>
+        {% endfor %}
         <div class="col-md-6 offset-md-1">
         {% if form is defined %}
             {{ form_start(form) }}
