@@ -28,11 +28,6 @@
                 {{ message }}
             </div>
         {% endfor %}
-        {% for message in app.flashes('error') %}
-            <div class="alert alert-error">
-                {{ form_errors(form) }}
-            </div>
-        {% endfor %}
         <div class="col-md-6 offset-md-1">
         {% if form is defined %}
             {{ form_start(form) }}
@@ -44,6 +39,9 @@
                 {{ form_widget(form.name,{'attr':{'class':'form-control'}}) }}
 
                 {{ form_label(form.phone,"Telefonszám") }}
+                <div class="text-danger">
+                {{ form_errors(form.phone) }}
+                </div>
                 {{ form_widget(form.phone,{'attr':{'class':'form-control'}}) }}
 
                 {{ form_label(form.taxnum,"Adószám") }}

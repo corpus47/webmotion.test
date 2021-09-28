@@ -41,8 +41,6 @@ class AddressController extends AbstractController
 
             return $this->redirectToRoute('address/create');
             
-        } elseif( $form->isSubmitted() && !$form->isValid()) {
-
         }
 
 

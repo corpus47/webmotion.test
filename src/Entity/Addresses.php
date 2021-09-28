@@ -32,7 +32,8 @@ class Addresses
      * @ORM\Column(type="string", length=255)
      * 
      * @Assert\Regex(
-     *      pattern="/((?:\+?3|0)6)(?:-|\()?(\d{1,2})(?:-|\))?(\d{3})-?(\d{3,4})/"
+     *      pattern="/((?:\+?3|0)6)(?:-|\()?(\d{1,2})(?:-|\))?(\d{3})-?(\d{3,4})/",
+     *      message="Érvénytelen telefonszám formátum"
      * )
      */
     private $phone;
