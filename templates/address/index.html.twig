@@ -18,18 +18,19 @@
 </div>
 <div class="container-fluid mx-auto px-5 pt-5 border">
     <div class="row">
-        <h3 class=" mt-5 mb-5">
-        {% if form_title is defined %}
-        {{ form_title }}
-        {% endif %}
-        </h3>
-        {% for message in app.flashes('notice') %}
-            <div class="alert alert-success">
-                {{ message }}
-            </div>
-        {% endfor %}
-        <div class="col-md-6 offset-md-1">
+        
+        <div class="col-md-6 offset-md-1 mx-auto">
         {% if form is defined %}
+            <h3 class="mb-5">
+            {% if form_title is defined %}
+            {{ form_title }}
+            {% endif %}
+            </h3>
+            {% for message in app.flashes('notice') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
             {{ form_start(form) }}
             <div class="form-group">
 
