@@ -61,7 +61,7 @@ class AddressesType extends AbstractType
             ])
             ->add('submit',SubmitType::class,[
                 'attr' => [
-                    'class' => 'btn btn-success mt-3'
+                    'class' => 'btn btn-success mt-3 mb-3'
                 ],
             ])
         ;
