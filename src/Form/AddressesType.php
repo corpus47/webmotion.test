@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 
 class AddressesType extends AbstractType
 {
@@ -18,15 +19,32 @@ class AddressesType extends AbstractType
         $builder
             ->add('type',ChoiceType::class,[
                 'choices' => [
-                    "Válasszon" => null,
+                    "Típus" => null,
                     "Magánszemély" => 0,
                     "Cég" => 1,
                 ],
             ])
-            ->add('name',TextType::class)
-            ->add('phone',TelType::class)
-            ->add('taxnum',TextType::class)
-            ->add('country',TextType::class)
+            ->add('name',TextType::class,[
+                'attr' => [
+                    'Placeholder' => 'Név',
+                ]
+            ])
+            ->add('phone',TelType::class, [
+                'attr' => [
+                    'Placeholder' => 'Telefonszám ( pl.: +36011234567 )',
+                ]
+            ])
+            ->add('taxnum',TextType::class,[
+                'attr' => [
+                    'Placeholder' => 'Adószám ( pl.: 12345678-1-12 )',
+                ]
+            ])
+            ->add('country',CountryType::class,[
+                'preferred_choices' => ['HU'],
+                'attr' => [
+                    'placeholder' => 'Válasszon országot!'
+                ],
+            ])
             ->add('postcode',TextType::class)
             ->add('city',TextType::class)
             ->add('street',TextType::class)

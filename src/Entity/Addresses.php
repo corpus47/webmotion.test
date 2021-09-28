@@ -25,6 +25,9 @@ class Addresses
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Assert\NotBlank( message="A mező nem lehet üres!")
+     * 
      */
     private $name;
 
@@ -40,6 +43,12 @@ class Addresses
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Assert\Regex(
+     *          pattern="/^(\d{7})(\d)\-([1-5])\-(0[2-9]|[13][0-9]|2[02-9]|4[0-4]|51)$/",
+     *          message="Nem megfelelő adószám formátum!"
+     * )
+     * 
      */
     private $taxnum;
 
