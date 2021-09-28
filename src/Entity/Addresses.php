@@ -54,11 +54,19 @@ class Addresses
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Assert\NotBlank( message="A mező nem lehet üres!")
+     * 
      */
     private $country;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Assert\Regex(
+     *          pattern="/^[0-9]{4}?$/",
+     *          message="Nem megfelelő irányítószám formátum!"
+     * ) 
      */
     private $postcode;
 

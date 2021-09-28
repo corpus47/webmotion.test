@@ -39,15 +39,26 @@ class AddressesType extends AbstractType
                     'Placeholder' => 'Adószám ( pl.: 12345678-1-12 )',
                 ]
             ])
-            ->add('country',CountryType::class,[
-                'preferred_choices' => ['HU'],
+            ->add('country',TextType::class,[
                 'attr' => [
-                    'placeholder' => 'Válasszon országot!'
+                    'placeholder' => 'Ország'
                 ],
             ])
-            ->add('postcode',TextType::class)
-            ->add('city',TextType::class)
-            ->add('street',TextType::class)
+            ->add('postcode',TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Irányítószám'
+                ],
+            ])
+            ->add('city',TextType::class,[
+                'attr' => [
+                    'placeholder' => 'Helység'
+                ],
+            ])
+            ->add('street',TextType::class,[
+                'attr' => [
+                    'placeholder' => 'Utca, házszám'
+                ],
+            ])
             ->add('submit',SubmitType::class,[
                 'attr' => [
                     'class' => 'btn btn-success mt-3'

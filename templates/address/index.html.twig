@@ -33,7 +33,7 @@
             {{ form_start(form) }}
             <div class="form-group">
 
-                {{ form_widget(form.type,{'attr':{'class':'form-control mt-3'}}) }}
+                {{ form_widget(form.type,{'attr':{'class':'form-control mt-3 text-muted'}}) }}
 
                 {% if form_errors(form.name)|length > 0 %}
                 {{ form_widget(form.name,{'attr':{'class':'form-control mt-3  border-danger'}}) }}
@@ -53,7 +53,7 @@
                 </div>
 
                 {% if form_errors(form.taxnum)|length > 0 %}
-                    {{ form_widget(form.taxnum,{'attr':{'class':'form-control mt-3  border-danger'}}) }}
+                    {{ form_widget(form.taxnum,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
                 {% else %}
                     {{ form_widget(form.taxnum,{'attr':{'class':'form-control mt-3'}}) }}
                 {% endif %}
@@ -61,17 +61,35 @@
                     {{ form_errors(form.taxnum) }}
                 </div>
 
-                {{ form_label(form.country,"Ország") }}
-                {{ form_widget(form.country,{'attr':{'class':'form-control'}}) }}
+                {% if form_errors(form.taxnum)|length > 0 %}
+                    {{ form_widget(form.country,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
+                {% else %}
+                    {{ form_widget(form.country,{'attr':{'class':'form-control mt-3'}}) }}
+                {% endif %}
+                <div class="text-danger">
+                    {{ form_errors(form.country) }}
+                </div>
 
-                {{ form_label(form.postcode,"Irányítószám") }}
-                {{ form_widget(form.postcode,{'attr':{'class':'form-control'}}) }}
+                {% if form_errors(form.postcode)|length > 0 %}
+                    {{ form_widget(form.postcode,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
+                {% else %}
+                    {{ form_widget(form.postcode,{'attr':{'class':'form-control mt-3'}}) }}
+                {% endif %}
+                <div class="text-danger">
+                    {{ form_errors(form.postcode) }}
+                </div>
 
-                {{ form_label(form.city,"Helység") }}
-                {{ form_widget(form.city,{'attr':{'class':'form-control'}}) }}
+                {% if form_errors(form.city)|length > 0 %}
+                    {{ form_widget(form.city,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
+                {% else %}
+                    {{ form_widget(form.city,{'attr':{'class':'form-control mt-3'}}) }}
+                {% endif %}
 
-                {{ form_label(form.street,"Utca, házszám") }}
-                {{ form_widget(form.street,{'attr':{'class':'form-control'}}) }}
+                {% if form_errors(form.street)|length > 0 %}
+                    {{ form_widget(form.street,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
+                {% else %}
+                    {{ form_widget(form.street,{'attr':{'class':'form-control mt-3'}}) }}
+                {% endif %}
 
                 {{ form_widget(form.submit,{'label':'Felvisz'}) }}
             </div>
