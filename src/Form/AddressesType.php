@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Addresses;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,8 +22,8 @@ class AddressesType extends AbstractType
             ->add('type',ChoiceType::class,[
                 'choices' => [
                     "Típus" => null,
-                    "Magánszemély" => 0,
-                    "Cég" => 1,
+                    "Magánszemély" => '0',
+                    "Cég" => '1',
                 ],
             ])
             ->add('name',TextType::class,[
@@ -34,11 +36,11 @@ class AddressesType extends AbstractType
                     'Placeholder' => 'Telefonszám ( pl.: +36011234567 )',
                 ]
             ])
-            ->add('taxnum',TextType::class,[
+            /*->add('taxnum',TextType::class,[
                 'attr' => [
                     'Placeholder' => 'Adószám ( pl.: 12345678-1-12 )',
                 ]
-            ])
+            ])*/
             ->add('country',TextType::class,[
                 'attr' => [
                     'placeholder' => 'Ország'
@@ -65,6 +67,29 @@ class AddressesType extends AbstractType
                 ],
             ])
         ;
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            // ... adding the name field if needed
+            $address = $event->getData();
+            $form = $event->getForm();
+
+            if($address->getType() == 0) {
+                $form->add('taxnum',TextType::class,[
+                    'required'   => true,
+                    'attr' => [
+                        'Placeholder' => 'Adószám ( pl.: 12345678-1-12 )',
+                    ]
+                ]);
+            } else {
+                $form->add('taxnum',TextType::class,[
+                    'required'   => false,
+                    'attr' => [
+                        'Placeholder' => 'Adószám ( pl.: 12345678-1-12 )',
+                        'class' => 'd-none',
+                    ]
+                ]);
+            }
+        });
     }
 
     public function configureOptions(OptionsResolver $resolver)

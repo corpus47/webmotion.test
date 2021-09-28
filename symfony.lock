@@ -88,6 +88,9 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
+    "kriswallsmith/assetic": {
+        "version": "v1.0.5"
+    },
     "laminas/laminas-code": {
         "version": "4.4.3"
     },
@@ -161,6 +164,9 @@
     },
     "psr/log": {
         "version": "1.1.4"
+    },
+    "robloach/component-installer": {
+        "version": "0.0.12"
     },
     "sebastian/cli-parser": {
         "version": "1.0.1"

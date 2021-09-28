@@ -11,7 +11,28 @@
         
 
         {% block javascripts %}
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
             {{ encore_entry_script_tags('app') }}
+            <script type="text/javascript">
+                $(document).on("ready",function(){
+
+                    $('#addresses_type').on('change',function(){
+                        var choice = $(this).val();
+                        if(choice < 2) {
+                            $('#addresses_taxnum').removeAttr('required');
+                            if($('#addresses_taxnum').is(':visible')) {
+                                $('#addresses_taxnum').hide();
+                            }
+                        } else {
+                            $('#addresses_taxnum').attr('required','required');
+                            if($('#addresses_taxnum').is(':hidden')) {
+                                $('#addresses_taxnum').show();
+                            }
+                        }
+                    });
+
+                });
+                </script>
         {% endblock %}
     </head>
     <body class="px-5">

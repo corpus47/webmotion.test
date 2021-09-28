@@ -1,0 +1,21 @@
+{
+  "name": "webmotion.test",
+  "description": "",
+  "main": "",
+  "authors": [
+    "corpus47 <csuporbela@gmail.com>"
+  ],
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/corpus47/webmotion.test",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}
