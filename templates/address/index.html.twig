@@ -29,6 +29,9 @@
             </div>
         {% endfor %}
         <div class="col-md-6 offset-md-1">
+
+        {{ dump(form_errors(form)) }}
+
         {% if form is defined %}
             {{ form_start(form) }}
             <div class="form-group">
@@ -40,9 +43,13 @@
 
                 {{ form_label(form.phone,"Telefonszám") }}
                 <div class="text-danger">
-                {{ form_errors(form.phone) }}
+                    {{ form_errors(form.phone) }}
                 </div>
-                {{ form_widget(form.phone,{'attr':{'class':'form-control'}}) }}
+                {% if form_errors(form.phone)|length > 0 %}
+                   {{ form_widget(form.phone,{'attr':{'class':'form-control border-danger'}}) }}
+                {% else %}
+                   {{ form_widget(form.phone,{'attr':{'class':'form-control'}}) }}
+                {% endif %}
 
                 {{ form_label(form.taxnum,"Adószám") }}
                 {{ form_widget(form.taxnum,{'attr':{'class':'form-control'}}) }}

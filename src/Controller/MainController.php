@@ -16,8 +16,9 @@ class MainController extends AbstractController
         /*return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
         ]);*/
-        return $this->render('address/index.html.twig', [
+        /*return $this->render('address/index.html.twig', [
             'controller_name' => 'AddressController',
-        ]);
+        ]);*/
+        return $this->redirectToRoute('address/create');
     }
 }
