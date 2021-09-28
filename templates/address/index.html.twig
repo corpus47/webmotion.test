@@ -100,8 +100,39 @@
     </div>
 </div>
 <div class="container-fluid text-center mx-auto px-5 pt-5">
-    <div>
-        list
-    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Típus</th>
+                <th scope="col">Név</th>
+                <th scope="col">Telefonszám</th>
+                <th scope="col">Adószám</th>
+                <th scope="col">Ország</th>
+                <th scope="col">Irányítószám</th>
+                <th scope="col">Helység</th>
+                <th scope="col">Utca, házszám</th>
+                <th scope="col">&nbsp</th>
+                <th scope="col">&nbsp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in data %}
+            <tr>
+                <td scope="row">{{ data.type }}</td>
+                <td scope="row">{{ data.name }}</td>
+                <td scope="row">{{ data.phone }}</td>
+                <td scope="row">{{ data.taxnum }}</td>
+                <td scope="row">{{ data.country }}</td>
+                <td scope="row">{{ data.postcode }}</td>
+                <td scope="row">{{ data.city }}</td>
+                <td scope="row">{{ data.street }}</td>
+                <td scope="row">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>
+                </td>
+                <td scope="row"><a href="#" class="btn btn-danger">Töröl</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}

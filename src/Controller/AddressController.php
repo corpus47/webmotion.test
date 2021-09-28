@@ -27,6 +27,8 @@ class AddressController extends AbstractController
 
     public function create(Request $request) {
 
+        $data = $this->getDoctrine()->getRepository(Addresses::class)->findAll();
+
         $address = new Addresses();
 
         $form = $this->createForm(AddressesType::class,$address);
@@ -47,8 +49,14 @@ class AddressController extends AbstractController
         return $this->render('address/index.html.twig',[
             'controller_name' => 'Felvitel',
             'form_title' => 'Felvitel',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'data' => $data,
         ]);
+
+    }
+
+
+    private function getTable() {
 
     }
 
