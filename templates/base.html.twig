@@ -39,6 +39,18 @@
                         }
                     });
 
+                    $('select[name=address]').on('change',function(){
+                        //alert($(this).val());
+                        if($(this).val() < 0 ) {
+                            $('.newOrderForm').removeClass('d-none');
+                            $('input[name=address_id]').val('null');
+                        } else {
+                            $('.newOrderForm').addClass('d-none');
+                            $('input[name=address_id]').val($(this).val());
+                        }
+
+                    });
+
                 });
                 </script>
         {% endblock %}

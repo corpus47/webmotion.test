@@ -16,15 +16,14 @@
         </li>
     </ul>
 </div>
-
 <div class="container-fluid align-items-center mx-auto px-5 pt-5">
     <div class="row">
         <div class="col-md-6 offset-md-1 mx-auto">
             <h3 class="mb-5">Rendelés</h3>
             <div class="form-group">
-                <select name="adress" class="form-control text-muted">
+                <select name="address" class="form-control text-muted">
                     <option value="null" selected="selected">Megrendelő. Válasszon a listából!</option>
-                    <option value="null" >Új szállítási cím</option>
+                    <option value="-1" >Új szállítási cím</option>
                     {% for option in options %}
                         <option value="{{ option.id }}">{{ option.name }}</option>
                     {% endfor %}
@@ -35,7 +34,8 @@
     <div class="row">
         <div class="col-md-6 offset-md-1 mx-auto">
             
-                {{ form_start(form)}}
+                {{ form_start(form,{ 'attr' : { 'class' : 'newOrderForm d-none' } }) }}
+                    <input type="hidden" name="address_id" value=null />
                     <div class="form-group">
                         {% if form_errors(form.type)|length > 0 %}
                             {{ form_widget(form.type,{'attr':{'class':'form-control mt-3 text-muted border-danger'}}) }}
@@ -100,6 +100,24 @@
                         {{ form_widget(form.street,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
                     {% else %}
                         {{ form_widget(form.street,{'attr':{'class':'form-control mt-3'}}) }}
+                    {% endif %}
+
+                    {% if form_errors(form.netto)|length > 0 %}
+                        {{ form_widget(form.netto,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
+                    {% else %}
+                        {{ form_widget(form.netto,{'attr':{'class':'form-control mt-3'}}) }}
+                    {% endif %}
+
+                    {% if form_errors(form.tax)|length > 0 %}
+                        {{ form_widget(form.tax,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
+                    {% else %}
+                        {{ form_widget(form.tax,{'attr':{'class':'form-control mt-3'}}) }}
+                    {% endif %}
+
+                    {% if form_errors(form.brutto)|length > 0 %}
+                        {{ form_widget(form.brutto,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
+                    {% else %}
+                        {{ form_widget(form.brutto,{'attr':{'class':'form-control mt-3'}}) }}
                     {% endif %}
 
                     {{ form_widget(form.submit,{'label':'Felvisz'}) }}

@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Orders;
+use App\Form\OrdersType;
 use App\Entity\Addresses;
 use App\Form\AddressesType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,12 +16,12 @@ class OrderController extends AbstractController
     /**
      * @Route("/order", name="order")
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
 
-        $address = new Addresses();
+       $order = new Orders();
 
-        $form = $this->createForm(AddressesType::class,$address);
+       $form = $this->createForm(OrdersType::class,$order);
 
         
 
