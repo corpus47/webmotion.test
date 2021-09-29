@@ -16,4 +16,53 @@
         </li>
     </ul>
 </div>
+<div class="container-fluid align-items-center mx-auto px-5 pt-5 border">
+    <div class="row">
+        <div class="col-md-6 offset-md-1 mx-auto">
+            <h3 class="mb-5">Megrendelések</h3>
+        </div>
+    </div>
+    {% if data is defined %}
+    <table class="table-responsive-md table-striped mx-auto mb-5 table-hover table-sm table-bordered">
+        <thead class="bg-secondary text-light">
+            <tr>
+                <th scope="col">Típus</th>
+                <th scope="col">Név</th>
+                <th scope="col">Telefonszám</th>
+                <th scope="col">Adószám</th>
+                <th scope="col">Ország</th>
+                <th scope="col">Irányítószám</th>
+                <th scope="col">Helység</th>
+                <th scope="col">Utca, házszám</th>
+                <th scope="col">Netto</th>
+                <th scope="col">Áfa</th>
+                <th scope="col">Brutto</th>
+            </tr>
+             </thead>
+        <tbody>
+            {% for data in data %}
+            <tr>
+                <td scope="row">
+                {% if data.type == 0 %}
+                Msz.
+                {% else %}
+                Cég
+                {% endif %}
+                </td>
+                <td scope="row">{{ data.name }}</td>
+                <td scope="row">{{ data.phone }}</td>
+                <td scope="row">{{ data.taxnum }}</td>
+                <td scope="row">{{ data.country }}</td>
+                <td scope="row">{{ data.postcode }}</td>
+                <td scope="row">{{ data.city }}</td>
+                <td scope="row">{{ data.street }}</td>
+                <td scope="row">{{ data.netto }}</td>
+                <td scope="row">{{ data.tax }}</td>
+                <td scope="row">{{ data.brutto }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
 {% endblock %}
