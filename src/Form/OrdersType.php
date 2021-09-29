@@ -80,7 +80,11 @@ class OrdersType extends AbstractType
                     'placeholder' => 'Brutto összeg'
                 ]
             ])
-            ->add('submit',SubmitType::class)
+            ->add('submit',SubmitType::class,[
+                'attr' => [
+                    'class' => 'btn btn-success mt-3 mb-3'
+                ]
+            ])
         ;
 
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
