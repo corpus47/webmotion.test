@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\AddressesRepository;
+use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -19,7 +20,10 @@ class Addresses
     private $id;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=false)
+     * 
+     * @Assert\NotNull( message="Válasszont típust!" )
+     * 
      */
     private $type;
 

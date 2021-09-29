@@ -34,7 +34,14 @@
             {{ form_start(form) }}
             <div class="form-group">
 
-                {{ form_widget(form.type,{'attr':{'class':'form-control mt-3 text-muted'}}) }}
+                {% if form_errors(form.type)|length > 0 %}
+                    {{ form_widget(form.type,{'attr':{'class':'form-control mt-3 text-muted border-danger'}}) }}
+                {% else %}
+                    {{ form_widget(form.type,{'attr':{'class':'form-control mt-3 text-muted'}}) }}
+                {% endif %}
+                <div class="text-danger">
+                    {{ form_errors(form.type) }}
+                </div>
 
                 {% if form_errors(form.name)|length > 0 %}
                 {{ form_widget(form.name,{'attr':{'class':'form-control mt-3  border-danger'}}) }}
@@ -103,8 +110,8 @@
     </div>
 </div>
 {% if data is defined %}
-<div class="container-fluid text-center mx-auto px-5 pt-5">
-    <table class="table">
+<div class="container-fluid text-center pt-5">
+    <table class="table-responsive-md table-striped mx-auto mb-5 table-hover table-sm table-bordered">
         <thead class="bg-secondary text-light">
             <tr>
                 <th scope="col">Típus</th>
@@ -124,7 +131,7 @@
             <tr>
                 <td scope="row">
                 {% if data.type == 0 %}
-                Magánszemély
+                Msz.
                 {% else %}
                 Cég
                 {% endif %}
