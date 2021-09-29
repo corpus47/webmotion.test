@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\OrdersRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\OrdersRepository;
+use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=OrdersRepository::class)
@@ -19,31 +21,57 @@ class Orders
 
     /**
      * @ORM\Column(type="integer")
+     * 
+     * @Assert\NotNull( message="Válasszont típust!" )
+     * 
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Assert\NotBlank( message="A mező nem lehet üres!")
+     * 
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Assert\Regex(
+     *      pattern="/((?:\+?3|0)6)(?:-|\()?(\d{1,2})(?:-|\))?(\d{3})-?(\d{3,4})/",
+     *      message="Érvénytelen telefonszám formátum"
+     * )
+     * 
      */
     private $phone;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * 
+     * @Assert\Regex(
+     *          pattern="/^(\d{7})(\d)\-([1-5])\-(0[2-9]|[13][0-9]|2[02-9]|4[0-4]|51)$/",
+     *          message="Nem megfelelő adószám formátum!"
+     * )
+     * 
      */
     private $taxnum;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Assert\NotBlank( message="A mező nem lehet üres!")
+     * 
      */
     private $country;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Assert\Regex(
+     *          pattern="/^[0-9]{4}?$/",
+     *          message="Nem megfelelő irányítószám formátum!"
+     * )
      */
     private $postcode;
 

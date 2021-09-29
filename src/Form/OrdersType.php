@@ -65,19 +65,19 @@ class OrdersType extends AbstractType
             ->add('netto',MoneyType::class,[
                 'currency' => 'HUF',
                 'attr' => [
-                    'placeholder' => 'Netto összeg'
+                    'placeholder' => ''
                 ]
             ])
             ->add('tax',MoneyType::class,[
                 'currency' => 'HUF',
                 'attr' => [
-                    'placeholder' => 'ÁFA'
+                    'placeholder' => ''
                 ]
             ])
             ->add('brutto',MoneyType::class,[
                 'currency' => 'HUF',
                 'attr' => [
-                    'placeholder' => 'Brutto összeg'
+                    'placeholder' => ''
                 ]
             ])
             ->add('submit',SubmitType::class,[

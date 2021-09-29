@@ -39,19 +39,51 @@
                         }
                     });
 
+                    $('#orders_netto').val(20000);
+                    $('#orders_tax').val(2000);
+                    $('#orders_brutto').val(22000);
+
                     $('select[name=address]').on('change',function(){
                         //alert($(this).val());
                         if($(this).val() < 0 ) {
                             $('.newOrderForm').removeClass('d-none');
-                            $('input[name=address_id]').val('null');
+                            $('input[name=address_id]').val(null);
+                            $('form[name=orders]').find("input,select,textarea").val("");
+                            $('#orders_type').val("0").change();
+                            $('#orders_country').val("Magyar").change();
+                            $('#orders_netto').val(20000);
+                            $('#orders_tax').val(2000);
+                            $('#orders_brutto').val(22000);
                         } else {
                             $('.newOrderForm').addClass('d-none');
                             $('input[name=address_id]').val($(this).val());
+                            getAddress($(this).val());
                         }
 
                     });
 
                 });
+
+                function getAddress(id) {
+                    $.ajax({
+                        'url' : 'order/ajax/'+id,
+                        'type': 'GET',
+                        'dataType' : 'json',
+                        'async' : true,
+                        success: function(data,status) {
+                            console.log(data);
+                            console.log(status);
+                            $("#orders_type").val(data.type+1).change();
+                            $("#orders_name").val(data.name);
+                            $("#orders_phone").val(data.phone);
+                            $("#orders_taxnum").val(data.taxnum);
+                            $("#orders_country").val(data.country);
+                            $("#orders_postcode").val(data.postcode);
+                            $("#orders_city").val(data.city);
+                            $("#orders_street").val(data.street);
+                        }
+                    });
+                }
                 </script>
         {% endblock %}
     </head>
