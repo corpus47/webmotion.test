@@ -16,4 +16,100 @@
         </li>
     </ul>
 </div>
+
+<div class="container-fluid align-items-center mx-auto px-5 pt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-1 mx-auto">
+            <h3 class="mb-5">Rendelés</h3>
+            <div class="form-group">
+                <select name="adress" class="form-control text-muted">
+                    <option value="null" selected="selected">Megrendelő. Válasszon a listából!</option>
+                    <option value="null" >Új szállítási cím</option>
+                    {% for option in options %}
+                        <option value="{{ option.id }}">{{ option.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-1 mx-auto">
+            
+                {{ form_start(form)}}
+                    <div class="form-group">
+                        {% if form_errors(form.type)|length > 0 %}
+                            {{ form_widget(form.type,{'attr':{'class':'form-control mt-3 text-muted border-danger'}}) }}
+                        {% else %}
+                            {{ form_widget(form.type,{'attr':{'class':'form-control mt-3 text-muted'}}) }}
+                        {% endif %}
+                    <div class="text-danger">
+                        {{ form_errors(form.type) }}
+                    </div>
+
+                    {% if form_errors(form.name)|length > 0 %}
+                    {{ form_widget(form.name,{'attr':{'class':'form-control mt-3  border-danger'}}) }}
+                    {% endif %}
+                    {{ form_widget(form.name,{'attr':{'class':'form-control mt-3'}}) }}
+                    <div class="text-danger">
+                        {{ form_errors(form.name) }}
+                    </div>
+
+                    {% if form_errors(form.phone)|length > 0 %}
+                    {{ form_widget(form.phone,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
+                    {% else %}
+                    {{ form_widget(form.phone,{'attr':{'class':'form-control mt-3'}}) }}
+                    {% endif %}
+                    <div class="text-danger">
+                        {{ form_errors(form.phone) }}
+                    </div>
+
+                    {% if form_errors(form.taxnum)|length > 0 %}
+                        {{ form_widget(form.taxnum,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
+                    {% else %}
+                        {{ form_widget(form.taxnum,{'attr':{'class':'form-control mt-3'}}) }}
+                    {% endif %}
+                    <div class="text-danger">
+                        {{ form_errors(form.taxnum) }}
+                    </div>
+
+                    {% if form_errors(form.taxnum)|length > 0 %}
+                        {{ form_widget(form.country,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
+                    {% else %}
+                        {{ form_widget(form.country,{'attr':{'class':'form-control mt-3'}}) }}
+                    {% endif %}
+                    <div class="text-danger">
+                        {{ form_errors(form.country) }}
+                    </div>
+
+                    {% if form_errors(form.postcode)|length > 0 %}
+                        {{ form_widget(form.postcode,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
+                    {% else %}
+                        {{ form_widget(form.postcode,{'attr':{'class':'form-control mt-3'}}) }}
+                    {% endif %}
+                    <div class="text-danger">
+                        {{ form_errors(form.postcode) }}
+                    </div>
+
+                    {% if form_errors(form.city)|length > 0 %}
+                        {{ form_widget(form.city,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
+                    {% else %}
+                        {{ form_widget(form.city,{'attr':{'class':'form-control mt-3'}}) }}
+                    {% endif %}
+
+                    {% if form_errors(form.street)|length > 0 %}
+                        {{ form_widget(form.street,{'attr':{'class':'form-control mt-3 border-danger'}}) }}
+                    {% else %}
+                        {{ form_widget(form.street,{'attr':{'class':'form-control mt-3'}}) }}
+                    {% endif %}
+
+                    {{ form_widget(form.submit,{'label':'Felvisz'}) }}
+                    {% if mode is defined and mode == "update" %}
+                    <a href="{{ path('address/create') }}" class="btn btn-secondary mt-3 mb-3 mx-3">Mégsem</a>
+                    {% endif %}
+                </div>
+                {{ form_end(form) }}
+            
+        </div>
+    </div>
+</div>
 {% endblock %}
