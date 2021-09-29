@@ -46,6 +46,7 @@ class AddressController extends AbstractController
         }
 
 
+        
         return $this->render('address/index.html.twig',[
             'controller_name' => 'Felvitel',
             'form_title' => 'Felvitel',
@@ -55,7 +56,59 @@ class AddressController extends AbstractController
 
     }
 
+    /**
+    * @Route("/address/update/{id}",name="address/update")
+    */
 
+    public function update(Request $request, $id) {
+
+        $data = $this->getDoctrine()->getRepository(Addresses::class)->findAll();
+
+        $address = $this->getDoctrine()->getRepository(Addresses::class)->find($id);
+
+        $form = $this->createForm(AddressesType::class,$address);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($address);
+            $em->flush();
+
+            $this->addFlash('notice','Módosítás kész!');
+
+            return $this->redirectToRoute('address/create');
+            
+        }
+
+        return $this->render('address/index.html.twig',[
+            'controller_name' => 'Módosítás',
+            'form_title' => 'Módosítás',
+            'form' => $form->createView(),
+            'data' => $data,
+            'mode' => 'update'
+        ]);
+
+    }
+
+    /**
+    * @Route("/address/delete/{id}",name="address/delete")
+    */
+
+    public function delete(Request $request, $id) {
+
+        return $this->render('address/index.html.twig',[
+            'controller_name' => 'Törlés',
+            'form_title' => 'Törlés',
+            //'form' => $form->createView(),
+            //'data' => $data,
+        ]);
+
+    }
+
+    /**
+     *
+     */
+    
     private function getTable() {
 
     }

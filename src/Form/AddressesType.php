@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -41,9 +42,18 @@ class AddressesType extends AbstractType
                     'Placeholder' => 'Adószám ( pl.: 12345678-1-12 )',
                 ]
             ])*/
-            ->add('country',TextType::class,[
+            /*->add('country',TextType::class,[
                 'attr' => [
                     'placeholder' => 'Ország'
+                ],
+            ])*/
+            ->add('country',ChoiceType::class, [
+                'choices' => [
+                    "Ország: Magyarország" => 'Magyar',
+                    "Ausztria" => 'Ausztria',
+                    "Szlovákia" => 'Szlovákia',
+                    "Románia" => "Románia",
+                    "Ukrajna" => "Ukrajna"
                 ],
             ])
             ->add('postcode',TextType::class, [
@@ -66,6 +76,13 @@ class AddressesType extends AbstractType
                     'class' => 'btn btn-success mt-3 mb-3'
                 ],
             ])
+            /*->add('cancel', SubmitType::class, [
+                'label' => 'Mégsem',
+                'attr' => [                       
+                    'formnovalidate'=>'formnovalidate',
+                    'class' => 'btn btn-secondary mt-3 mb-3 mx-3'
+                ], 
+            ])*/
         ;
 
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
