@@ -38,17 +38,12 @@ class OrderController extends AbstractController
            $em->persist($order);
            $em->flush();
 
-            //var_dump($req->get('orders_id'));
 
-            if($req->get('orders_id') === NULL){
-                //dd($req->get('orders'));die();
+            if($req->get('address_id') === "null" || empty($req->get('address_id'))){
+
                 $address = new Addresses();
 
-               
-
                 $new_address = $req->get('orders');
-
-                //var_dump($new_address);die();
 
                 $address->setType($new_address['type']);
                 $address->setName($new_address['name']);
@@ -75,7 +70,6 @@ class OrderController extends AbstractController
             'controller_name' => 'OrderController',
             'options' => $this->getDoctrine()->getRepository(Addresses::class)->findAll(),
             'form' => $form->createView(),
-            //'open' => $open,
         ]);
     }
 
@@ -88,7 +82,7 @@ class OrderController extends AbstractController
 
             $address = $this->getDoctrine()->getRepository(Addresses::class)->find($id);
 
-            //var_dump($address);
+            //dd($address);die();
 
             $jsonData = [
                 'type' => $address->getType(),

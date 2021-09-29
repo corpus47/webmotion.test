@@ -44,8 +44,13 @@
                     $('#orders_brutto').val(22000);
 
                     $('select[name=address]').on('change',function(){
-                        //alert($(this).val());
+                        
+                        var token = $('#orders__token').val();
+
                         if($(this).val() < 0 ) {
+
+                            console.log(token);
+
                             $('.newOrderForm').removeClass('d-none');
                             $('input[name=address_id]').val(null);
                             $('form[name=orders]').find("input,select,textarea").val("");
@@ -54,6 +59,7 @@
                             $('#orders_netto').val(20000);
                             $('#orders_tax').val(2000);
                             $('#orders_brutto').val(22000);
+                            $('#orders__token').val(token);
                         } else {
                             $('.newOrderForm').addClass('d-none');
                             $('input[name=address_id]').val($(this).val());
