@@ -96,12 +96,22 @@ class AddressController extends AbstractController
 
     public function delete(Request $request, $id) {
 
-        return $this->render('address/index.html.twig',[
+        $address = $this->getDoctrine()->getRepository(Addresses::class)->find($id);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($address);
+        $em->flush();
+
+        $this->addFlash('notice','Cím törölve!');
+
+        return $this->redirectToRoute('address/create');
+
+        /*return $this->render('address/index.html.twig',[
             'controller_name' => 'Törlés',
             'form_title' => 'Törlés',
-            //'form' => $form->createView(),
-            //'data' => $data,
-        ]);
+            'form' => $form->createView(),
+            'data' => $data,
+        ]);*/
 
     }
 

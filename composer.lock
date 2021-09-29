@@ -4,8 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d81e2532b9659e0754931ac9942fbb2c",
+    "content-hash": "dd9967f2f3646e2b5ae0c4fc85494c00",
     "packages": [
+        {
+            "name": "components/jquery",
+            "version": "3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/jquery.git",
+                "reference": "09a1658378bc1f818856086396ebeab7d0ec2276"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/jquery/zipball/09a1658378bc1f818856086396ebeab7d0ec2276",
+                "reference": "09a1658378bc1f818856086396ebeab7d0ec2276",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "jquery.js"
+                    ],
+                    "files": [
+                        "jquery.min.js",
+                        "jquery.min.map"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "John Resig",
+                    "email": "jeresig@gmail.com"
+                }
+            ],
+            "description": "jQuery JavaScript Library",
+            "homepage": "http://jquery.com",
+            "support": {
+                "forum": "http://forum.jquery.com",
+                "irc": "irc://irc.freenode.org/jquery",
+                "issues": "http://bugs.jquery.com",
+                "source": "https://github.com/jquery/jquery",
+                "wiki": "http://docs.jquery.com/"
+            },
+            "time": "2016-09-23T06:06:29+00:00"
+        },
         {
             "name": "composer/package-versions-deprecated",
             "version": "1.11.99.4",
@@ -2336,6 +2383,47 @@
                 "source": "https://github.com/sensiolabs/SensioFrameworkExtraBundle/tree/v6.2.0"
             },
             "time": "2021-09-06T13:24:35+00:00"
+        },
+        {
+            "name": "sideclick/bootstrap-modal-bundle",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Sideclick/BootstrapModalBundle.git",
+                "reference": "9a2fe558d713bb638509a1f43e00b0d430f073b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Sideclick/BootstrapModalBundle/zipball/9a2fe558d713bb638509a1f43e00b0d430f073b1",
+                "reference": "9a2fe558d713bb638509a1f43e00b0d430f073b1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5",
+                "symfony/framework-bundle": "^3.4|^4.0|^5.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Sideclick\\BootstrapModalBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rowan Reid",
+                    "email": "rowan@sideclick.co.za"
+                }
+            ],
+            "description": "Bundle for Symfony 3.4+ that makes it easy to load pages into a Bootstrap modal window.",
+            "support": {
+                "issues": "https://github.com/Sideclick/BootstrapModalBundle/issues",
+                "source": "https://github.com/Sideclick/BootstrapModalBundle/tree/master"
+            },
+            "time": "2020-02-05T07:52:55+00:00"
         },
         {
             "name": "symfony/apache-pack",
